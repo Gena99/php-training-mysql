@@ -1,3 +1,37 @@
+<?php
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
+	$dsn = 'mysql:dbname=reunion_island;host=localhost';
+	$user = 'root';
+	$password = 'root';
+	/*
+	if (isset($_POST['name']) && isset($_POST['difficulty']) && isset($_POST['distance']) && isset($_POST['duration']) && isset($_POST['height_difference']) ) {
+	}
+	*/
+	echo 'ok....';
+	try {
+		$connexion = new PDO($dsn, $user, $password);
+	} catch (PDOException $e) {
+		echo 'Connexion échouée : ' . $e->getMessage();
+	}
+	$requestInsersion = "INSERT INTO `reunion_island`.`hiking` 
+	(`id`, `name`, `difficulty`, `distance`, `duration`, `height_difference`)
+	VALUES (null, '".$_POST['name']."', '".$_POST['difficulty']."', ".$_POST['distance'].", '".$_POST['duration']."', ".$_POST['height_difference'].");";
+	echo $requestInsersion;
+	$result = $connexion->query($requestInsersion);
+
+
+	
+}
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
